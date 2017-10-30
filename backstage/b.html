@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		li{
+			list-style: none;
+		}
+		ul{
+			width: 40%;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav_ul3"></ul>
+	<ul class="nav_ul4"></ul>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var a=window.location.href;
+		var c=a.split("?")[1].split("=")[1];
+		console.log(c);
+		if(isNaN(c)){
+			$.ajax({
+				url:"http://localhost:3000/item/a1",
+				type:"POST",
+				data:{abc:"x"},
+				success:function(e){
+					console.log(e);
+					for(k in e){
+						$(".nav_ul3").append("<li>"+e[k].id+e[k].name+"</li>");
+						$(".nav_ul4").append("<li>"+e[k].id+e[k].xianqing+"</li>");
+					}
+				}
+			})
+			$.ajax({
+				url:"http://localhost:3000/item/a1",
+				type:"POST",
+				data:{abc:"x"},
+				success:function(e){
+					console.log(e);
+					for(k in e){
+						console.log(e);
+					}
+				}
+			})
+		}else{
+			$.ajax({
+				url:"http://localhost:3000/item/a1",
+				type:"POST",
+				data:{abc:c},
+				success:function(e){
+					console.log(e);
+					for(k in e){
+						$(".nav_ul3").append("<li>"+e[k].id+e[k].xianqing+"</li>");
+					}
+				}
+			})
+			$.ajax({
+				url:"http://localhost:3000/item/b1",
+				type:"POST",
+				data:{abc:c},
+				success:function(e){
+					console.log(e);
+					$(".nav_ul4").append("<li>"+e[0].id+e[0].main+"</li>");
+				}
+			})
+		}
+		
+		
+	})
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		li{
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="nav_li"></li>
+	</ul>
+	<ul class="nav_ul2"></ul>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+			url:"http://localhost:3000/item/a",
+			type:"POST",
+			data:{abc:"x"},
+			success:function(e){
+				for(i in e){
+					$(".nav_li").append("<a href='b.html?id=x'>"+e[i].nav+"</a>");
+				}
+			}
+		})
+		$.ajax({
+			url:"http://localhost:3000/item/a1",
+			type:"POST",
+			// data:{abc:c},
+			success:function(e){
+				for(k in e){
+					$(".nav_ul2").append("<li><a href='b.html?id="+e[k].id+"'>"+e[k].id+e[k].name+"</a></li>");
+				}
+			}
+		})
+	})
+</script>
+</html>
